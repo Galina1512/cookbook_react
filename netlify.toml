@@ -1,0 +1,23 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# Настройки для SPA (чтобы все маршруты вели на index.html)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Заголовки для кэширования
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# Оптимизация для статических файлов
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
