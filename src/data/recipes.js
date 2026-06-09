@@ -174,8 +174,7 @@ const initialRecipes = [
         recipe: "Яйцо-1шт, рисовая мука 1 стл, кефир (ряженка, йогурт или сметана) - 3 стл, разрыхлитель, сыр - 30гр",
         ganre: "breakfast",
         image: "https://avatars.mds.yandex.net/i?id=612c7022a2d491520b4b1a159cbb2402-5682746-images-thumbs&n=13"
-    },
-   
+    }
 ];
 
 //ключ для LocalStorage
@@ -199,7 +198,7 @@ const loadRecipes = () => {
 };
 
 // Сохранение рецептов в localStorage
-export const saveRecipes = (recipes) => {
+const saveRecipesToLocal = (recipes) => {
     try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(recipes));
     } catch (error) {
@@ -246,6 +245,7 @@ export const addRecipe = (newRecipe) => {
         id: maxId + 1
     };
     recipes.push(recipeWithId);
+    saveRecipesToLocal(recipes);
     return recipeWithId;
 };
 
@@ -254,6 +254,7 @@ export const updateRecipe = (updatedRecipe) => {
     const index = recipes.findIndex(recipe => recipe.id === updatedRecipe.id);
     if (index !== -1) {
         recipes[index] = { ...recipes[index], ...updatedRecipe };
+        saveRecipesToLocal(recipes);
         return true;
     }
     return false;
@@ -264,9 +265,53 @@ export const deleteRecipe = (id) => {
     const index = recipes.findIndex(recipe => recipe.id === id);
     if (index !== -1) {
         recipes.splice(index, 1);
+        saveRecipesToLocal(recipes);
         return true;
     }
     return false;
+};
+
+// Функция для экспорта рецептов в JSON (для бэкапа)
+export const exportRecipes = () => {
+    const dataStr = JSON.stringify(recipes, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    const exportFileDefaultName = `cookbook_backup_${new Date().toISOString().slice(0,19)}.json`;
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+};
+
+// Функция для импорта рецептов из JSON
+export const importRecipes = (jsonFile) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const importedRecipes = JSON.parse(e.target.result);
+                if (Array.isArray(importedRecipes)) {
+                    recipes.length = 0;
+                    recipes.push(...importedRecipes);
+                    saveRecipesToLocal(recipes);
+                    resolve(importedRecipes);
+                } else {
+                    reject(new Error('Неверный формат файла'));
+                }
+            } catch (error) {
+                reject(error);
+            }
+        };
+        reader.onerror = reject;
+        reader.readAsText(jsonFile);
+    });
+};
+
+// Функция для сброса к начальным рецептам
+export const resetToDefault = () => {
+    recipes.length = 0;
+    recipes.push(...initialRecipes);
+    saveRecipesToLocal(recipes);
+    return recipes;
 };
 
 // Перевод жанров на русский
