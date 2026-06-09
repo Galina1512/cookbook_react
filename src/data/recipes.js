@@ -199,7 +199,7 @@ const loadRecipes = () => {
 };
 
 // Сохранение рецептов в localStorage
-const saveRecipes = (recipes) => {
+export const saveRecipes = (recipes) => {
     try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(recipes));
     } catch (error) {
