@@ -4,7 +4,7 @@
   command = "npm run build"
   publish = "build"
 
-# Настройки для SPA (чтобы все маршруты вели на index.html)
+# Важно! Обработка SPA маршрутизации
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -14,9 +14,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "no-cache"
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
-# Оптимизация для статических файлов
 [[headers]]
   for = "/static/*"
   [headers.values]
