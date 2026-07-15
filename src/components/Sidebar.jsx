@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getGenreName } from '../data/recipes';
+import { getGenreName, exportRecipes, resetToDefault } from '../data/recipes';
 
 const SidebarContainer = styled.aside`
   width: 280px;
@@ -106,6 +106,24 @@ const AddButton = styled.button`
   }
 `;
 
+const ActionButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  background: ${props => props.danger ? '#ff4444' : '#4caf50'};
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+`;
+
 const Stats = styled.div`
   text-align: center;
   padding-top: 20px;
@@ -139,8 +157,38 @@ const MenuButton = styled.button`
   }
 `;
 
-function Sidebar({ categories, selectedCategory, onCategoryChange, searchTerm, onSearchChange, onAddRecipe, recipeCount, totalRecipes }) {
+const FileInput = styled.input`
+  display: none;
+`;
+
+function Sidebar({ categories, selectedCategory, onCategoryChange, searchTerm, onSearchChange, onAddRecipe, recipeCount, totalRecipes, onReset }) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const fileInputRef = React.useRef(null);
+  
+  const handleExport = () => {
+    exportRecipes();
+  };
+  
+  const handleImport = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      importRecipes(file)
+        .then(() => {
+          alert('Рецепты успешно импортированы! Страница будет обновлена.');
+          window.location.reload();
+        })
+        .catch(error => {
+          alert('Ошибка импорта: ' + error.message);
+        });
+    }
+  };
+  
+  const handleReset = () => {
+    if (window.confirm('Вы уверены? Все ваши изменения будут потеряны. Вернуться к начальному набору рецептов?')) {
+      resetToDefault();
+      window.location.reload();
+    }
+  };
   
   return (
     <>
@@ -178,12 +226,40 @@ function Sidebar({ categories, selectedCategory, onCategoryChange, searchTerm, o
           ➕ Добавить рецепт
         </AddButton>
         
+        <ActionButton onClick={handleExport}>
+          💾 Скачать бэкап рецептов
+        </ActionButton>
+        
+        <ActionButton as="label" style={{ background: '#2196f3', cursor: 'pointer' }}>
+          📂 Загрузить бэкап
+          <FileInput
+            type="file"
+            accept=".json"
+            onChange={handleImport}
+            ref={fileInputRef}
+          />
+        </ActionButton>
+        
+        <ActionButton danger onClick={handleReset}>
+          🔄 Сбросить к начальным
+        </ActionButton>
+        
         <Stats>
           Показано: <strong>{recipeCount}</strong> из {totalRecipes} рецептов
+        </Stats>
+        
+        <Stats style={{ fontSize: '11px', color: '#ccc' }}>
+          💾 Все изменения сохраняются автоматически
         </Stats>
       </SidebarContainer>
     </>
   );
 }
+
+// Функция импорта должна быть доступна
+const importRecipes = async (file) => {
+  const { importRecipes: importRecipesFn } = await import('../data/recipes');
+  return importRecipesFn(file);
+};
 
 export default Sidebar;

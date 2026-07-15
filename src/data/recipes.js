@@ -1,4 +1,6 @@
-// export const recipes = [
+// src/data/recipes.js
+
+// Исходные рецепты (только для первого запуска)
 const initialRecipes = [
     {
         id: 1,
@@ -96,7 +98,7 @@ const initialRecipes = [
         name: "Лимонные сырники",
         recipe: "Творог 200 гр до 5% + 1 белок(или желток) + 1 чл лимонной цедры + 2 ст л муки (рис овой, кукурузной или овсяной без горки) + ваниль. Все смешать и жарить на а/п сковороде. Пполить 2 чл меда или ягод добавить (или добавить сах зам в сырники)",
         ganre: "breakfast",
-        image: "https://avatars.mds.yandex.net/i?id=3622dc96fe4dc3d410730a7398abb35b8b07043c-12423448-images-thumbs&n=13"
+        image: "https://foodman.club/wp-content/uploads/2019/04/Bez-nazvaniya-8-2.jpg"
     },
     {
         id: 15,
@@ -110,103 +112,84 @@ const initialRecipes = [
         name: "Куриные грудки, тушеные с луком и морковью",
         recipe: "Одну луковицу и морковку обжарить на капле масла. Затем добавить мелко порезанные грудки. Тушить под крышкой на медленном огне. Минут через 10 добавить томатную пасту, воду и специи",
         ganre: "dinner",
-        image: "https://avatars.mds.yandex.net/i?id=aa515d362f89ec02752cdb952a09238b68d132fc-4885380-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Куриные+грудки"
     },
     {
         id: 17,
         name: "Рыба, запеченная в фольге",
         recipe: "Рыбку натираем специями, добавляем кусочки лимона, можно морковку еще потереть. Всё заворачиваем в фольгу и запекаем в духовке минут 30 при 180 гр.",
         ganre: "dinner",
-        image: "https://avatars.mds.yandex.net/i?id=0b320eeb89bd93e05aa4ceba17784120a273c092-5296093-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Рыба+в+фольге"
     },
     {
         id: 18,
         name: "Гуляш из индейки",
         recipe: "Мясо индейки порезать маленькими кусочками, обжарить на капле масла, добавить соль, специи, томатную пасту (3 стл) и воду. Можно добавить сладкий перец и морковь. Тушить на медленном огне до готовности",
         ganre: "dinner",
-        image: "https://avatars.mds.yandex.net/i?id=5cc4393e9e4b779f9d689d1d5c39916c0c947d9e-5147227-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Гуляш+из+индейки"
     },
     {
         id: 19,
         name: "Корейская морковка с куриными сердечками",
         recipe: "Две большие морковки почистить и потереть на терке. 300 гр сердечек(в сыром виде) отварить на медленном огне до готовности (около 25 мин), остудить и порезать. Смешать морковь и сердечки. Добавить соль, перец, специи для корейской морковки, масло растительное (2чл) и немного уксус. Все перемешать и оставить настояться 30-40 мин",
         ganre: "supper",
-        image: "https://avatars.mds.yandex.net/i?id=6d1fcdfcda53e4ea46f9d182aa833bc6279e3004-5343659-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Корейская+морковка+с+сердечками"
     },
     {
         id: 20,
         name: "Салат из куриной грудки",
         recipe: "Нарезать соломкой отварную грудку (~ 70 гр), так же порезать помидор, огурец  и салат айсберг. Заправка : йогурт натуральный 20-30г, горчица 1/2 ч/л, капля лимона, специи, соль (это аналог майонеза - очень вкусно)",
         ganre: "supper",
-        image: "https://avatars.mds.yandex.net/i?id=e55ae7507507baa247ff991d40b3e271ee2e8c1e-5220403-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Салат+из+куриной+грудки"
     },
     {
         id: 21,
         name: "Лодочки из кабачков фаршированные",
         recipe: "Нам понадобятся кабачки среднего размера, куриная грудка, помидоры, йогурт, зелень, чеснок и сыр. Кабачки разрезать вдоль и вырезать аккуратно ножом или ложкой сердцевину. Лук и чеснок мелко нашинковать, выложить на сухую сковороду и слегка обжарить. Добавить порезанные сердцевины кабачков, чуть обжарить, затем добавить порезанное филе и приготовить до полуготовности. Посолить, добавить томатную пасту и ещё потушить до полного испарения воды. Выложить начинку в заготовки из кабачков, сверху положить помидорку и посыпать сыром. Поставить в духовку на 30 мин при 180*. Готовые лодочки посыпать зеленью",
         ganre: "supper",
-        image: "https://avatars.mds.yandex.net/i?id=b5c97f7bade70ae0c2377913180716120b245f47-5232236-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Лодочки+из+кабачков"
     },
     {
         id: 22,
         name: "Смузи",
         recipe: "В 200 мл кефира добавить 50гр любых ягод и 20 гр семя льна. Всё тщательно взбить блендером",
         ganre: "snack",
-        image: "https://avatars.mds.yandex.net/i?id=e142749584f4ee0f1f87741922186962-5281296-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Смузи"
     },
     {
         id: 23,
         name: "ПП мороженое",
         recipe: "Хорошо вызревший банан ломаем на небольшие кусочки, складываем в контейнер или пакет и отправляем в морозильную камеру на ночь. Затем перекладываем фрукты в блендер (по желанию добавляем молоко) и взбиваем смесь до получения ровной консистенции.",
         ganre: "snack",
-        image: "https://avatars.mds.yandex.net/i?id=5e0090885c6f775d9a8eebb9daf75e13506c0853-8550886-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=ПП+мороженое"
     },
     {
         id: 24,
         name: "Морковный блинчик",
         recipe: "Половинку средней морковки натереть на мелкой терке. Добавить 1 яйцо, 1,5 ст.ложки рисовой муки (можно кукурузной), 1,5 ст ложки кефира, ваниль, разрыхлитель, корицу. Все перемешать и выпекать блинчик на сковороде с двух сторон под крышкой. Готовый блинчик разрезать, промазать мягким творогом. Можно добавить 1 чл меда",
         ganre: "breakfast",
-        image: "https://avatars.mds.yandex.net/i?id=1fe8af4d6ef8a9457a3199f7531233ed8e3b26a9-4562233-images-thumbs&n=13"
-    },
-     {
-        id: 25,
-        name: "Рисовый блин с сыром",
-        recipe: "Яйцо-1шт, рисовая мука 1 стл, кефир (ряженка, йогурт или сметана) - 3 стл, разрыхлитель, сыр - 30гр",
-        ganre: "breakfast",
-        image: "https://avatars.mds.yandex.net/i?id=612c7022a2d491520b4b1a159cbb2402-5682746-images-thumbs&n=13"
+        image: "https://via.placeholder.com/600x380?text=Морковный+блинчик"
     }
 ];
 
-//ключ для LocalStorage
+// Ключ для localStorage
 const STORAGE_KEY = 'cookbook_recipes';
 
 // Загрузка рецептов из localStorage или начальных данных
 const loadRecipes = () => {
-    try {
-        const savedRecipes = localStorage.getItem(STORAGE_KEY);
-        if (savedRecipes) {
-            const parsed = JSON.parse(savedRecipes);
-            if (Array.isArray(parsed) && parsed.length > 0) {
-                return parsed;
-            }
-        }
-        return [...initialRecipes];
-    } catch (error) {
-        console.error('Ошибка загрузки из localStorage:', error);
-        return [...initialRecipes];
+    const savedRecipes = localStorage.getItem(STORAGE_KEY);
+    if (savedRecipes) {
+        return JSON.parse(savedRecipes);
     }
+    return initialRecipes;
 };
 
 // Сохранение рецептов в localStorage
-const saveRecipesToLocal = (recipes) => {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(recipes));
-    } catch (error) {
-        console.error('Ошибка сохранения в localStorage:', error);
-    }
+const saveRecipes = (recipes) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(recipes));
 };
 
-// Экспортируем текущие рецепты
+// Экспортируем текущие рецепты (загружаем при старте)
 export let recipes = loadRecipes();
 
 // Функция для получения уникальных категорий
@@ -245,7 +228,7 @@ export const addRecipe = (newRecipe) => {
         id: maxId + 1
     };
     recipes.push(recipeWithId);
-    saveRecipesToLocal(recipes);
+    saveRecipes(recipes);
     return recipeWithId;
 };
 
@@ -254,7 +237,7 @@ export const updateRecipe = (updatedRecipe) => {
     const index = recipes.findIndex(recipe => recipe.id === updatedRecipe.id);
     if (index !== -1) {
         recipes[index] = { ...recipes[index], ...updatedRecipe };
-        saveRecipesToLocal(recipes);
+        saveRecipes(recipes);
         return true;
     }
     return false;
@@ -265,7 +248,7 @@ export const deleteRecipe = (id) => {
     const index = recipes.findIndex(recipe => recipe.id === id);
     if (index !== -1) {
         recipes.splice(index, 1);
-        saveRecipesToLocal(recipes);
+        saveRecipes(recipes);
         return true;
     }
     return false;
@@ -290,9 +273,8 @@ export const importRecipes = (jsonFile) => {
             try {
                 const importedRecipes = JSON.parse(e.target.result);
                 if (Array.isArray(importedRecipes)) {
-                    recipes.length = 0;
-                    recipes.push(...importedRecipes);
-                    saveRecipesToLocal(recipes);
+                    recipes = importedRecipes;
+                    saveRecipes(recipes);
                     resolve(importedRecipes);
                 } else {
                     reject(new Error('Неверный формат файла'));
@@ -308,9 +290,8 @@ export const importRecipes = (jsonFile) => {
 
 // Функция для сброса к начальным рецептам
 export const resetToDefault = () => {
-    recipes.length = 0;
-    recipes.push(...initialRecipes);
-    saveRecipesToLocal(recipes);
+    recipes = [...initialRecipes];
+    saveRecipes(recipes);
     return recipes;
 };
 
