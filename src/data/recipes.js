@@ -98,7 +98,7 @@ const initialRecipes = [
         name: "Лимонные сырники",
         recipe: "Творог 200 гр до 5% + 1 белок(или желток) + 1 чл лимонной цедры + 2 ст л муки (рис овой, кукурузной или овсяной без горки) + ваниль. Все смешать и жарить на а/п сковороде. Пполить 2 чл меда или ягод добавить (или добавить сах зам в сырники)",
         ganre: "breakfast",
-        image: "https://foodman.club/wp-content/uploads/2019/04/Bez-nazvaniya-8-2.jpg"
+        image: "https://avatars.mds.yandex.net/i?id=14e66a2963bfb7ddebb6b56c94e951f07809f52ab10d9a7f-12140636-images-thumbs&n=13"
     },
     {
         id: 15,
